@@ -12,6 +12,8 @@ namespace CleanUpTheCode
     {
         static void Main(string[] args)
         {
+
+            Data text = new Data();
             // Calling the header from Logic class.
             Logic.GetHeader();
             
@@ -33,12 +35,12 @@ namespace CleanUpTheCode
             {
                 case 1:
                     {
-                        Data.GetDiskMetaData();
+                        Logic.GetDiskMetaData();
                         break;
                     }
                 case 2:
                     {
-                        Data.GetHardDiskSerialNumber();
+                        Logic.GetHardDiskSerialNumber();
                         break;
                     }
                 case 3:
@@ -53,17 +55,18 @@ namespace CleanUpTheCode
                     }
                 case 5:
                     {
-                        Logic.GetOrganizationInfo();
+                        PrintToConsole(Logic.GetOrganizationInfo());
                         break;
                     }
                 case 6:
                     {
-                        Logic.BootDeviceTest();
+                        
+                        PrintToConsole(Logic.GetBootDeviceTest());
                         break;
                     }
                 case 7:
                     {
-                        Logic.ListAllServices();
+                        Logic.GetListAllServices();
                         break;
                     }
             }
@@ -71,5 +74,10 @@ namespace CleanUpTheCode
             Console.ReadKey();
 
         } //Slut main
+
+        public static void PrintToConsole(string text)
+        {
+            Console.WriteLine(text);
+        }
     }
 }
