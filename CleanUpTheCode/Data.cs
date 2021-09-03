@@ -10,7 +10,7 @@ namespace CleanUpTheCode
     public class Data
     {
 
-        public static void GetDiskMetadata()
+        public static void GetDiskMetaData()
         {
 
             ManagementScope managementScope = new ManagementScope();
@@ -49,5 +49,6 @@ namespace CleanUpTheCode
             return managementObject["VolumeSerialNumber"].ToString();
 
         }
+
     }
 }

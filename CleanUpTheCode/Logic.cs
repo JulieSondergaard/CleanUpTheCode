@@ -9,7 +9,27 @@ namespace CleanUpTheCode
 {
     public static class Logic
     {
-        public static void HovedLager()
+
+        public static void GetHeader()
+        {
+            string header = "";
+            string headerSpace = "";
+
+            for (int i = 0; i < 50; i++)
+            {
+                header += "=";
+                if (i % 4 == 0)
+                {
+                    headerSpace += " ";
+                }
+
+            }
+            Console.WriteLine(header);
+            Console.WriteLine($"\n {headerSpace} Clean Up The Code \n ");
+            Console.WriteLine(header);
+        }
+
+        public static void GetMemoryInformation()
         {
             ObjectQuery wql = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(wql);
@@ -25,7 +45,7 @@ namespace CleanUpTheCode
 
         }
 
-        public static void Cpu() 
+        public static void GetCpuInformation() 
         {
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_PerfFormattedData_PerfOS_Processor");
             foreach (ManagementObject obj in searcher.Get())
@@ -38,7 +58,7 @@ namespace CleanUpTheCode
         }
 
             
-    public static void Test()
+    public static void GetOrganizationInfo()
         {
             ObjectQuery wql = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(wql);
@@ -51,29 +71,29 @@ namespace CleanUpTheCode
             }
 
         }
-        public static void Testhest()
+        public static void BootDeviceTest()
         {
-            Console.WriteLine("testhest start");
+            Console.WriteLine("Boot Device Test");
             ManagementScope scope = new ManagementScope("\\\\.\\ROOT\\cimv2");
 
-            //create object query
+            // Create object query.
             ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
 
-            //create object searcher
+            // Create object searcher.
             ManagementObjectSearcher searcher =
                                     new ManagementObjectSearcher(scope, query);
 
-            //get a collection of WMI objects
+            // Get a collection of WMI objects.
             ManagementObjectCollection queryCollection = searcher.Get();
 
-            //enumerate the collection.
+            // Enumerate the collection.
             foreach (ManagementObject m in queryCollection)
             {
-                // access properties of the WMI object
+                // Access properties of the WMI object.
                 Console.WriteLine("BootDevice : {0}", m["BootDevice"]);
 
             }
-            Console.WriteLine("testhest slut");
+            Console.WriteLine("Boot Device Test slut");
 
 
         }
