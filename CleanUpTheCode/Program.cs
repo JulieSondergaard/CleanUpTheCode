@@ -12,7 +12,7 @@ namespace CleanUpTheCode
     {
         static void Main(string[] args)
         {
-
+            Logic memory = new Logic();
             Data text = new Data();
             // Calling the header from Logic class.
             Logic.GetHeader();
@@ -50,7 +50,14 @@ namespace CleanUpTheCode
                     }
                 case 4:
                     {
-                        Logic.GetMemoryInformation();
+                        foreach (Memory m in memory.GetMemoryInformation())
+                        {
+                            Console.WriteLine("Free Virtual Memory: {0}KB", m.FreeVirtualMemory);
+                            Console.WriteLine("Total Virtual Memory: {0}KB", m.TotalVirtualMemorySize);
+                            Console.WriteLine("Free Physical Memory: {0}KB", m.FreePhysicalMemory);                         
+                            Console.WriteLine("Total Visible Memory: {0}KB", m.TotalVisibleMemorySize);
+                        }
+
                         break;
                     }
                 case 5:

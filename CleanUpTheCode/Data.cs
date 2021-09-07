@@ -73,19 +73,25 @@ namespace CleanUpTheCode
             }
         }
 
-        public static void MemoryInformation()
+        public List<Memory> MemoryInformation()
         {
             ObjectQuery wql = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(wql);
             ManagementObjectCollection results = searcher.Get();
 
+            List<Memory> memory = new List<Memory>();
             foreach (ManagementObject result in results)
             {
-                Console.WriteLine("Total Visible Memory: {0}KB", result["TotalVisibleMemorySize"]);
-                Console.WriteLine("Free Physical Memory: {0}KB", result["FreePhysicalMemory"]);
-                Console.WriteLine("Total Virtual Memory: {0}KB", result["TotalVirtualMemorySize"]);
-                Console.WriteLine("Free Virtual Memory: {0}KB", result["FreeVirtualMemory"]);
+                memory.Add(new Memory(result["FreeVirtualMemory"].ToString(), result["TotalVirtualMemorySize"].ToString(), 
+                    result["FreePhysicalMemory"].ToString(), result["TotalVisibleMemorySize"].ToString()));
+
+                
+                //Console.WriteLine("Total Visible Memory: {0}KB", result["TotalVisibleMemorySize"]);
+                //Console.WriteLine("Free Physical Memory: {0}KB", result["FreePhysicalMemory"]);
+                //Console.WriteLine("Total Virtual Memory: {0}KB", result["TotalVirtualMemorySize"]);
+                //Console.WriteLine("Free Virtual Memory: {0}KB", result["FreeVirtualMemory"]);
             }
+            return memory;
 
         }
 

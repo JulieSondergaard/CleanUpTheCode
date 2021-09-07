@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace CleanUpTheCode
 {
-    public static class Logic
+    public class Logic
     {
-
+        Data memory = new Data(); 
+        
         public static void GetHeader()
         {
             string header = "";
@@ -43,9 +44,9 @@ namespace CleanUpTheCode
         {
             Data.ListAllServices();
         }
-        public static void GetMemoryInformation()
+        public List<Memory> GetMemoryInformation()
         {
-            Data.MemoryInformation();
+            return memory.MemoryInformation();
         }
 
         public static void GetCpuInformation()
